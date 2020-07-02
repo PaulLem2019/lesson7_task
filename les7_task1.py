@@ -29,16 +29,13 @@ class Matrix:
         return f'Matrix is: \n{string}'
 
     def __add__(self, other):
-        sumMatrix = [[]]
-        for iter in self.lists:
-            for numb1, iter1 in enumerate (iter):
-                sumMatrix.append([])
-                sumel = 0
-                for numb2, iter2 in enumerate (iter1):
-                    sumel = self.lists[numb1][numb2] + other.lists[numb1][numb2]
-                    sumMatrix.append(sumel)
-
-        return sumMatrix
+        NumStr = len(self.lists[0])
+        NumCol = len(other.lists[0])
+        for i in range(NumStr):
+            for j in range(NumCol):
+                self.lists[0][i][j] = self.lists[0][i][j] + other.lists[0][i][j]
+            Result = self.lists[0]
+        return Matrix(Result)
 
 m = Matrix([[10, 11, 12], [20, 21, 22], [30, 31, 32]])
 m1 = Matrix([[0, 1, 2], [10, 11, 12], [20, 21, 22]])

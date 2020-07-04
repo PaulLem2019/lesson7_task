@@ -44,7 +44,7 @@ class Cell:
         return Cell(self.numb_cells + other.numb_cells)
 
     def __sub__(self, other):
-        if self.numb_cells - other.numb_cels > 0:
+        if self.numb_cells - other.numb_cells > 0:
             return Cell(self.numb_cells - other.numb_cells)
         return f'Невозможно, исходных клеток меньше'
 
@@ -52,11 +52,10 @@ class Cell:
         return Cell(self.numb_cells * other.numb_cells)
 
     def __truediv__(self, other):
-        return Cell(self.numb_cells/other.numb_cells)
+        return Cell(int(self.numb_cells/other.numb_cells))
 
     def make_order(self, numb_columb):
-        # return [('*' * numb_columb) for _ in (self.numb_cells // numb_columb) + ('*' * (self.numb_cells % numb_columb))]
-        return [('*' * numb_columb)( for _ in (self.numb_cells // numb_columb)) + '\n' + ('*' * (self.numb_cells % numb_columb))]
+        return '\n'.join(['*' * numb_columb for _ in range (self.numb_cells // numb_columb)]) + '\n' + '*' * (self.numb_cells % numb_columb)
 
 c1 = Cell(10)
 c2 = Cell(17)
@@ -64,8 +63,17 @@ c2 = Cell(17)
 print(c1)
 print(c2)
 
+c3 = c1+c2
+c4 = c1 - c2
+c5 = c2/c1
+
 print (c1+c2)
 
-print (c2.make_order(5))
+print (c3.make_order(5))
+print (c4)
+print (c5)
+
+c6 = c3*c1
+print(c6.make_order(20))
 
 

@@ -1,8 +1,12 @@
 """
 3. Реализовать программу работы с органическими клетками. Необходимо создать класс Клетка. В его конструкторе
 инициализировать параметр, соответствующий количеству клеток (целое число). В классе должны быть реализованы
-методы перегрузки арифметических операторов: сложение (__add__()), вычитание (__sub__()), умножение (__mul__()),
-деление (__truediv__()).Данные методы должны применяться только к клеткам и выполнять увеличение, уменьшение,
+методы перегрузки арифметических операторов:
+сложение (__add__()),
+вычитание (__sub__()),
+умножение (__mul__()),
+деление (__truediv__()).
+Данные методы должны применяться только к клеткам и выполнять увеличение, уменьшение,
 умножение и обычное (не целочисленное) деление клеток, соответственно. В методе деления должно осуществляться
 округление значения до целого числа.
 
@@ -33,7 +37,35 @@ class Cell:
     def __init__(self, numb):
         self.numb_cells = numb
 
+    def __str__(self):
+        return f'Количество клеток: {str(self.numb_cells)}'
+
     def __add__(self, other):
-        return Cell(self.numb_cells + other.numb_cels)
+        return Cell(self.numb_cells + other.numb_cells)
 
     def __sub__(self, other):
+        if self.numb_cells - other.numb_cels > 0:
+            return Cell(self.numb_cells - other.numb_cells)
+        return f'Невозможно, исходных клеток меньше'
+
+    def __mul__(self, other):
+        return Cell(self.numb_cells * other.numb_cells)
+
+    def __truediv__(self, other):
+        return Cell(self.numb_cells/other.numb_cells)
+
+    def make_order(self, numb_columb):
+        # return [('*' * numb_columb) for _ in (self.numb_cells // numb_columb) + ('*' * (self.numb_cells % numb_columb))]
+        return [('*' * numb_columb)( for _ in (self.numb_cells // numb_columb)) + '\n' + ('*' * (self.numb_cells % numb_columb))]
+
+c1 = Cell(10)
+c2 = Cell(17)
+
+print(c1)
+print(c2)
+
+print (c1+c2)
+
+print (c2.make_order(5))
+
+

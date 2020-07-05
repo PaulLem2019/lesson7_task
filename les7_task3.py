@@ -60,20 +60,22 @@ class Cell:
 c1 = Cell(10)
 c2 = Cell(17)
 
-print(c1)
-print(c2)
+print(f'Количество клеток с1: {c1}')
+print(f'Количество клеток с2: {c2}')
 
 c3 = c1+c2
 c4 = c1 - c2
 c5 = c2/c1
 
-print (c1+c2)
+print (f'Количество суммы клеток с1+с2: {c1+c2}')
 
 print (c3.make_order(5))
-print (c4)
-print (c5)
+print (f'Количество суммы клеток c4 = с1-с2: {c4}')
+print (f'Количество клеток после деления: c5=с2/с1: {c5}')
+print (c5.make_order(15))
 
 c6 = c3*c1
+print ("Умножение клеток")
 print(c6.make_order(20))
 
 
